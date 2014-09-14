@@ -23,7 +23,9 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
 
 		servletContext.addListener(new ContextLoaderListener(appContext));
 
-		FilterRegistration.Dynamic wicketFilter = servletContext.addFilter("ru.dcak.MedReg", WicketFilter.class);
+		FilterRegistration.Dynamic wicketFilter = servletContext.addFilter(
+				"me.fornever.WicketPlayground",
+				WicketFilter.class);
 		wicketFilter.setInitParameters(
 				new HashMap<String, String>() {{
 					put("applicationClassName", WicketApplication.class.getCanonicalName());
@@ -31,7 +33,9 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
 				}});
 		wicketFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, "/*");
 
-		FilterRegistration.Dynamic osivFilter = servletContext.addFilter("hibernateFilter", OpenSessionInViewFilter.class);
+		FilterRegistration.Dynamic osivFilter = servletContext.addFilter(
+				"hibernateFilter",
+				OpenSessionInViewFilter.class);
 		osivFilter.setInitParameter("singleSession", "true");
 		osivFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
 	}

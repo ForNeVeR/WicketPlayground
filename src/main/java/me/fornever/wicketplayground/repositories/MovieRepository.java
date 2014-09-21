@@ -1,11 +1,9 @@
 package me.fornever.wicketplayground.repositories;
 
 import me.fornever.wicketplayground.entities.Movie;
-import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
-@Repository
 public interface MovieRepository {
 
 	public Collection<Movie> list();

@@ -1,7 +1,5 @@
 package me.fornever.wicketplayground.config;
 
-import me.fornever.wicketplayground.repositories.MovieRepository;
-import me.fornever.wicketplayground.repositories.MovieRepositoryImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -30,12 +28,6 @@ public class ApplicationConfiguration {
 	@Bean(name = "txManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
 		return new HibernateTransactionManager(sessionFactory);
-	}
-
-	@Autowired
-	@Bean(name = "movieRepository")
-	public MovieRepository getMovieRepository(SessionFactory sessionFactory) {
-		return new MovieRepositoryImpl(sessionFactory);
 	}
 
 	private Properties getHibernateProperties() {

@@ -2,14 +2,18 @@ package me.fornever.wicketplayground.repositories;
 
 import me.fornever.wicketplayground.entities.Movie;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
+@Repository("movieRepository")
 public class MovieRepositoryImpl implements MovieRepository {
 
 	private SessionFactory sessionFactory;
 
+	@Autowired
 	public MovieRepositoryImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

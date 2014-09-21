@@ -19,6 +19,7 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
+		appContext.scan("me.fornever.wicketplayground.repositories");
 		appContext.register(ApplicationConfiguration.class);
 
 		servletContext.addListener(new ContextLoaderListener(appContext));
